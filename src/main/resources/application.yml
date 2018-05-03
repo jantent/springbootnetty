@@ -1,0 +1,14 @@
+server:
+  port: 80
+
+tcp:
+  port: 8090
+boss:
+  thread:
+    count: 2
+worker:
+  thread:
+    count: 2
+so:
+  keepalive:  true
+  backlog: 100
