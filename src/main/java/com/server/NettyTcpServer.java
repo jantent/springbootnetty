@@ -1,4 +1,4 @@
-package com.config.server;
+package com.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -22,7 +22,6 @@ public class NettyTcpServer {
 
     @PostConstruct
     public void start() throws Exception{
-        System.out.printf("啊啊啊啊啊");
         System.out.printf("netty服务器启动");
         serverChannelFuture = bootstrap.bind(tcpPort).sync();
     }

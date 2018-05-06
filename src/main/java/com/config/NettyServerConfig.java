@@ -1,6 +1,6 @@
 package com.config;
 
-import com.config.server.handler.ServerInitializer;
+import com.server.handler.ServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Configuration
-public class NettyConfig {
+public class NettyServerConfig {
     @Value("${boss.thread.count}")
     private int bossCount;
 

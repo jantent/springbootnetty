@@ -1,4 +1,4 @@
-package com.config.server.handler;
+package com.server.handler;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
