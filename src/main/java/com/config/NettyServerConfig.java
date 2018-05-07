@@ -74,13 +74,4 @@ public class NettyServerConfig {
         return options;
     }
 
-    @Bean
-    public StringDecoder stringDecoder() {
-        return new StringDecoder();
-    }
-
-    @Bean
-    public StringEncoder stringEncoder() {
-        return new StringEncoder();
-    }
 }

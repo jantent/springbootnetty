@@ -1,25 +1,30 @@
 package com.client.handler;
 
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * @author tangj
  * @date 2018/5/6 22:54
  */
-@Configuration
+@Component
 public class ClientInitializer extends ChannelInitializer<SocketChannel> {
-    @Autowired
-    StringDecoder stringDecoder;
+
 
     @Autowired
-    StringEncoder stringEncoder;
+    ClientHandler clientHandler;
+
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-
+        ChannelPipeline pipeline = ch.pipeline();
+        pipeline.addLast("encoder",new StringEncoder());
+        pipeline.addLast("handler",clientHandler);
+        pipeline.addLast("decoder",new StringDecoder());
     }
 }

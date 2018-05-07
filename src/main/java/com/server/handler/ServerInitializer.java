@@ -14,19 +14,13 @@ import org.springframework.stereotype.Component;
 public class ServerInitializer extends ChannelInitializer<SocketChannel>{
 
     @Autowired
-    StringDecoder stringDecoder;
-
-    @Autowired
-    StringEncoder stringEncoder;
-
-    @Autowired
     TcpHandler tcpHandler;
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast("decoder",stringDecoder);
+        pipeline.addLast("decoder",new StringDecoder());
         pipeline.addLast("handler",tcpHandler);
-        pipeline.addLast("encoder",stringEncoder);
+        pipeline.addLast("encoder",new StringEncoder());
     }
 }

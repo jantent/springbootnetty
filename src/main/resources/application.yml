@@ -3,6 +3,7 @@ server:
 
 tcp:
   port: 8090
+  ip: 127.0.0.1
 boss:
   thread:
     count: 2
