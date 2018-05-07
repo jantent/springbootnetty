@@ -3,7 +3,6 @@ package com.config;
 import com.client.handler.ClientInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,7 @@ public class NettyClientConfig {
         bootstrap.group(clientGroup())
                 .channel(NioSocketChannel.class)
                 .option(ChannelOption.TCP_NODELAY, true)
+                .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(clientInitializer);
         return bootstrap;
     }

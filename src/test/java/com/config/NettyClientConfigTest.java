@@ -18,6 +18,6 @@ public class NettyClientConfigTest {
     @Test
     public void testClient()throws Exception{
         client.connect();
-//        client.stop();
+        client.sendMessage("ttessss");
     }
 }
