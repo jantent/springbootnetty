@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 @ComponentScan
 public class StartApplication {
 
-
     public static void main(String args[])throws Exception{
         SpringApplication.run(StartApplication.class,args);
     }

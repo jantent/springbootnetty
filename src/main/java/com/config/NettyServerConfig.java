@@ -42,12 +42,10 @@ public class NettyServerConfig {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(bossGroup(), workerGroup())
                 .channel(NioServerSocketChannel.class)
-                .childHandler(serverInitializer);
-        Map<ChannelOption<?>, Object> tcpChannelOptions = tcpChannelOptions();
-        Set<ChannelOption<?>> ketSet = tcpChannelOptions.keySet();
-        for (ChannelOption option : ketSet) {
-            bootstrap.option(option, tcpChannelOptions.get(option));
-        }
+                .childHandler(serverInitializer)
+                .option(ChannelOption.SO_KEEPALIVE,true)
+                .option(ChannelOption.TCP_NODELAY,true);
+
         return bootstrap;
     }
 
@@ -66,12 +64,5 @@ public class NettyServerConfig {
         return new InetSocketAddress(tcpPort);
     }
 
-    @Bean
-    public Map<ChannelOption<?>, Object> tcpChannelOptions() {
-        Map<ChannelOption<?>, Object> options = new HashMap<>();
-        options.put(ChannelOption.SO_KEEPALIVE, keepAlive);
-        options.put(ChannelOption.SO_BACKLOG, backlog);
-        return options;
-    }
 
 }

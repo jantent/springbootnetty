@@ -23,7 +23,8 @@ public class NettyTcpServer {
     @PostConstruct
     public void start() throws Exception{
         System.out.printf("netty服务器启动");
-//        serverChannelFuture = bootstrap.bind(tcpPort).sync();
+        serverChannelFuture = bootstrap.bind(tcpPort).sync();
+        serverChannelFuture.channel().closeFuture().sync();
     }
 
     @PreDestroy
