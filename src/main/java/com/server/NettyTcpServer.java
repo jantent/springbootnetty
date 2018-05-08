@@ -20,13 +20,21 @@ public class NettyTcpServer {
 
     private ChannelFuture serverChannelFuture;
 
+    /**
+     * 在启动servlet的时候，启动netty
+     * @throws Exception
+     */
     @PostConstruct
     public void start() throws Exception{
         System.out.printf("netty服务器启动");
-        serverChannelFuture = bootstrap.bind(tcpPort).sync();
+        serverChannelFuture = bootstrap.bind(tcpPort);
         serverChannelFuture.channel().closeFuture().sync();
     }
 
+    /**
+     * servlet关闭的时候，关闭netty服务
+     * @throws Exception
+     */
     @PreDestroy
     public void stop() throws Exception{
         serverChannelFuture.channel().closeFuture().sync();

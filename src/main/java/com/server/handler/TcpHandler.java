@@ -5,13 +5,9 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.net.InetAddress;
-
 @Component
-@Qualifier("TcpHandler")
 @ChannelHandler.Sharable
 public class TcpHandler extends SimpleChannelInboundHandler<String>{
 

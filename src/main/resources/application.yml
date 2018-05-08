@@ -1,8 +1,7 @@
-server:
-  port: 80
+
 
 tcp:
-  port: 8090
+  port: 3018
   ip: 127.0.0.1
 boss:
   thread:
@@ -10,6 +9,4 @@ boss:
 worker:
   thread:
     count: 2
-so:
-  keepalive:  true
-  backlog: 100
+
